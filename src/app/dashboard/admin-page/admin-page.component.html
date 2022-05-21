@@ -1,0 +1,44 @@
+<mat-toolbar color="primary" class="d-flex justify-content-between ps-5 pe-5">
+  <div>Welcome to the admin page, {{username}}</div>
+  <button mat-raised-button class="ps-3 pe-3 p-1 rounded logout-btn" (click)="redirectToMain()">
+    Main page
+  </button>
+  <button mat-raised-button class="ps-3 pe-3 p-1 rounded logout-btn" (click)="logout()">
+  LOG OUT
+  </button>
+</mat-toolbar>
+<div class="ms-5">
+  <mat-form-field appearance="fill" class="mt-4 ms-4 mb-1">
+    <mat-label>Filter events by:</mat-label>
+    <mat-select [(value)]="activeFilter" (selectionChange)="changeFilter($event)">
+      <mat-option *ngFor="let option of filter" [value]="option.value">
+        {{option.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div *ngIf='activeFilter=="unapproved"' class="row m-0  row-cols-xxl-3">
+    <div class="col" *ngFor="let event of events | paginate: {
+              itemsPerPage: pageSize,
+              currentPage: page,
+              totalItems: count
+            }; let i = index">
+      <app-event-card-admin [event]="event" (newAcceptEvent)="handleAcceptEvent($event)"></app-event-card-admin>
+    </div>
+  </div>
+  <div *ngIf='activeFilter=="approved"' class="row m-0 row-cols-xxl-3">
+    <div class="col" *ngFor="let event of events | paginate: {
+              itemsPerPage: pageSize,
+              currentPage: page,
+              totalItems: count
+            }; let i = index">
+      <app-event-card-verified [event]="event" (newAcceptEvent)="handleAcceptEvent($event)"></app-event-card-verified>
+    </div>
+  </div>
+
+
+</div>
+<pagination-controls class="d-flex justify-content-end me-5 position-fixed bottom-0 end-0"
+                     previousLabel="Prev"
+                     nextLabel="Next"
+                     (pageChange)="handlePageChange($event)"
+></pagination-controls>

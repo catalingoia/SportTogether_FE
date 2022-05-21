@@ -1,0 +1,16 @@
+@import "~bootstrap/dist/css/bootstrap.css";
+input {
+  -webkit-user-select: all !important;
+}
+.register-card{
+  width:450px;
+  height:600px;
+}
+
+.register-content{
+  width: 290px;
+}
+
+.register-btn{
+  padding:12px;
+}

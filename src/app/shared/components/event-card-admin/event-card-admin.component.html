@@ -1,0 +1,41 @@
+<mat-card class="card m-2">
+  <div class="d-flex justify-content-between">
+    <div class="card-left-container">
+      <mat-card-title>
+        {{event.sport}}
+      </mat-card-title>
+      <mat-card-subtitle>
+        level: {{event.level}}
+      </mat-card-subtitle>
+    </div>
+    <div class="card-right-container">
+      Created by:
+      <div class="card-full-name">
+        {{event.firstName}}
+        {{event.lastName}}
+      </div>
+    </div>
+  </div>
+  <mat-card-content class="d-flex flex-column">
+    <div>Location: {{event.location}}</div>
+    <div>Date: {{event.createTimestamp | date : 'mediumDate'}}</div>
+
+    <div>time: {{event.createTimestamp | date : 'shortTime'}}</div>
+    <div>
+      Number of players: {{event.maxPlayers}}
+    </div>
+  </mat-card-content>
+
+  <mat-card-actions class="d-flex justify-content-between align-items-center ms-1 mb-1">
+    <div>Price: {{event.price}} lei</div>
+    <div class="d-flex flex-row align-items-center">
+
+      <button mat-raised-button color="success" class="p-1 rounded " (click)="acceptEvent(event.id, true)" >
+        <mat-icon>done</mat-icon></button>
+      <button mat-raised-button color="warn" class="p-1 rounded" (click)="acceptEvent(event.id, false)">
+        <mat-icon>close</mat-icon></button>
+
+    </div>
+  </mat-card-actions>
+
+</mat-card>

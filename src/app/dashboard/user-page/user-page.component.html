@@ -1,0 +1,29 @@
+<mat-toolbar color="primary" class="d-flex justify-content-between ps-5 pe-5">
+  <button mat-raised-button class="ps-3 pe-3 p-1 rounded logout-btn" (click)="openModal()">
+    Create a new event
+  </button>
+  <div class=" d-flex justify-content-between align-items-center">
+    <button mat-raised-button class="pt-3 pb-3 me-4 rounded-circle logout-btn button-display" (click)="logout()">
+      <mat-icon class="icon-display">person</mat-icon>
+    </button>
+    <button mat-raised-button class="ps-3 pe-3 p-1 rounded logout-btn" (click)="logout()">
+      LOG OUT
+    </button>
+  </div>
+</mat-toolbar>
+
+<div class="ms-5 mt-5 row m-0 row-cols-xxl-3">
+  <div class="col" *ngFor="let event of events | paginate: {
+              itemsPerPage: pageSize,
+              currentPage: page,
+              totalItems: count
+            }; let i = index">
+    <app-event-card [event]="event" (newJoin)="joinEvent($event)"></app-event-card>
+  </div>
+</div>
+
+<pagination-controls class="d-flex justify-content-end me-5 position-fixed bottom-0 end-0"
+                     previousLabel="Prev"
+                     nextLabel="Next"
+                     (pageChange)="handlePageChange($event)"
+></pagination-controls>
