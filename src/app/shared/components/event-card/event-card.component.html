@@ -28,8 +28,8 @@
   </mat-card-content>
 
   <mat-card-actions class="d-flex justify-content-between align-items-center ms-1 mb-1">
-      <div>Price: {{event.price}} lei</div>
-     <div class="d-flex flex-row align-items-center">
+    <div>Price: {{event.price}} lei</div>
+    <div class="d-flex flex-row align-items-center">
       <div>
         {{event.participants.length}}/{{event.maxPlayers}}
       </div>
@@ -41,6 +41,21 @@
       </button>
     </div>
   </mat-card-actions>
-
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>Description and contact</mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="mb-3">
+      <mat-divider class="" ></mat-divider>
+    </div>
+    <p>{{event.description}}</p>
+    <div class="d-flex">
+      Contact:
+      <ul>
+        <li>{{event.contactEmail}}</li>
+        <li>{{event.contactPhone}}</li>
+      </ul>
+    </div>
+  </mat-expansion-panel>
 </mat-card>
 

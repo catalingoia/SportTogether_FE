@@ -12,3 +12,7 @@
 agm-map {
   height: 300px;
 }
+::ng-deep .pac-container
+{
+  z-index: 99999 !important;
+}

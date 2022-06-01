@@ -25,9 +25,7 @@
   </div>
   <mat-card-content class="d-flex flex-column mb-0">
     <div>Location: {{event.location}}</div>
-    <div>Date: {{event.createTimestamp | date : 'mediumDate'}}</div>
-
-    <div>time: {{event.createTimestamp | date : 'shortTime'}}</div>
+    <div>Creation date: {{event.createTimestamp | date : 'mediumDate'}}, {{event.createTimestamp | date : 'shortTime'}}</div>
     <div>
       Number of players: {{event.maxPlayers}}
     </div>
@@ -47,10 +45,24 @@
         <button mat-raised-button class="p-1 rounded" (click)="deleteEvent(event.id)">
           <mat-icon>delete</mat-icon>
         </button>
-
       </div>
 
     </div>
   </mat-card-actions>
-
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>Description and contact</mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="mb-3">
+      <mat-divider class="" ></mat-divider>
+    </div>
+    <p>{{event.description}}</p>
+    <div class="d-flex">
+      Contact:
+      <ul>
+        <li>{{event.contactEmail}}</li>
+        <li>{{event.contactPhone}}</li>
+      </ul>
+    </div>
+  </mat-expansion-panel>
 </mat-card>

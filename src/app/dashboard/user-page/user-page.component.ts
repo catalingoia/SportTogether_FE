@@ -5,6 +5,7 @@ import {takeUntil} from "rxjs";
 import {EventCardModel} from "../../shared/models/event-card.model";
 import {BaseComponent} from "../../core/components/base.component";
 import {ModalService} from "../../services/modal.service";
+import {JwtHelperService} from "@auth0/angular-jwt";
 
 @Component({
   selector: 'app-user-page',
@@ -16,11 +17,7 @@ export class UserPageComponent extends BaseComponent implements OnInit {
   count = 0;
   page = 0;
   pageSize = 6;
-
-  mapLoaded: Promise<boolean>
-  map: google.maps.Map;
-  mapClickListener: google.maps.MapsEventListener;
-
+  isAdmin = false
   constructor(private router: Router,
               private eventsService: EventsService,
               private modalService: ModalService) {
@@ -29,6 +26,12 @@ export class UserPageComponent extends BaseComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllApprovedEvents(0);
+    const helper = new JwtHelperService()
+    let token = JSON.parse(localStorage.getItem('token')!);
+    const decodedToken = helper.decodeToken(token.access_token);
+    if(decodedToken.roles.includes("ADMIN")){
+      this.isAdmin = true;
+    }
 
 
   }

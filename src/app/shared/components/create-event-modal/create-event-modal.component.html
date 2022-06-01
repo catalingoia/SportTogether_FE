@@ -2,39 +2,54 @@
   <h4 class="modal-title">Create an event</h4>
   <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
 </div>
-<div class="modal-body">
+<div class="modal-bod">
   <mat-stepper [linear]="true" #stepper>
     <mat-step [stepControl]="firstFormGroup">
-      <form [formGroup]="firstFormGroup">
+      <form (keydown.enter)="false" [formGroup]="firstFormGroup" class=" h-100">
         <ng-template matStepLabel>Sport, level and description</ng-template>
-        <div>
-          <div>Select a sport</div>
-          <mat-form-field appearance="fill" class="mt-3 mb-3">
+        <div>Select a sport and the level</div>
+        <div class="d-flex">
+          <mat-form-field appearance="fill" class="mt-3 mb-3 me-2">
             <mat-label>Choose a sport:</mat-label>
-            <select matNativeControl formControlName="sport" name="sport">
-              <option *ngFor="let option of sports" [value]="option.value">
+            <mat-select formControlName="sport" name="sport">
+              <mat-option *ngFor="let option of sports" [value]="option.value">
                 {{option.viewValue}}
-              </option>
-            </select>
+              </mat-option>
+            </mat-select>
           </mat-form-field>
-        </div>
-        <div>
-          <div>Select a level</div>
           <mat-form-field appearance="fill" class="mt-3 mb-3">
             <mat-label>Choose a level:</mat-label>
-            <select matNativeControl formControlName="level" name="level">
-              <option *ngFor="let option of levels" [value]="option.value">
+            <mat-select formControlName="level" name="level">
+              <mat-option *ngFor="let option of levels" [value]="option.value">
                 {{option.viewValue}}
-              </option>
-            </select>
+              </mat-option>
+            </mat-select>
           </mat-form-field>
         </div>
-        <div>
-          <div>Number of players</div>
+        <div> Contact information</div>
+        <div class="d-flex ">
+          <mat-form-field appearance="fill" class="mt-3 mb-3 me-2">
+            <mat-label>Phone Number</mat-label>
+            <input matInput type="number" (keypress)="($event.charCode >= 48 && $event.charCode < 58)"
+                   formControlName="contactPhone">
+          </mat-form-field>
           <mat-form-field appearance="fill" class="mt-3 mb-3">
+            <mat-label>Email</mat-label>
+            <input matInput type="email" formControlName="contactEmail">
+          </mat-form-field>
+
+        </div>
+        <div>Number of players and price</div>
+        <div class="d-flex">
+          <mat-form-field appearance="fill" class="mt-3 mb-3 me-2">
             <mat-label>Number of players</mat-label>
-            <input matInput type="number" formControlName="players" oninput="this.value=this.value.replace(/[^\d]/,'')"
-                   min=0>
+            <input matInput type="number" (keypress)="($event.charCode >= 48 && $event.charCode < 58)"
+                   formControlName="maxPlayers">
+          </mat-form-field>
+          <mat-form-field appearance="fill" class="mt-3 mb-3">
+            <mat-label>Price(RON)</mat-label>
+            <input matInput type="number" (keypress)="($event.charCode >= 48 && $event.charCode < 58)"
+                   formControlName="price">
           </mat-form-field>
         </div>
         <div>
@@ -48,22 +63,21 @@
           </mat-form-field>
         </div>
         <div>
-          <button matStepperNext>Next</button>
+          <button mat-stroked-button color="primary" class="ps-3 pe-3 pt-2 pb-2 rounded" matStepperNext>Next</button>
         </div>
       </form>
     </mat-step>
     <mat-step [stepControl]="secondFormGroup" label="Fill out your address">
-      <form [formGroup]="secondFormGroup">
+      <form (keydown.enter)="false" [formGroup]="secondFormGroup">
         <ng-template matStepLabel>Date, time and location</ng-template>
         <div class="m-3">Select a date and a time for your event</div>
-
         <div class="d-flex m-3">
-
           <div>
             <mat-form-field appearance="fill" class="me-4">
               <mat-label>Choose a date</mat-label>
-              <input matInput [matDatepicker]="datePicker">
-              <mat-hint>MM/DD/YYYY</mat-hint>
+              <input matInput [matDatepicker]="datePicker" formControlName="date"
+              >
+              <mat-hint>DD/MM/YYYY</mat-hint>
               <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
               <mat-datepicker #datePicker></mat-datepicker>
             </mat-form-field>
@@ -71,19 +85,21 @@
           <div>
             <mat-form-field appearance="fill">
               <mat-label>Choose a time</mat-label>
-              <input matInput [ngxMatTimepicker]="picker">
+              <input matInput [ngxMatTimepicker]="picker" formControlName="time">
               <ngx-mat-timepicker #picker></ngx-mat-timepicker>
             </mat-form-field>
           </div>
         </div>
         <div class="m-3 mt-5">
           <div class="mb-2">Select a location:</div>
-          <div class="d-flex justify-content-center">
+          <input #search autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control"
+                 formControlName="location">
+          <div class="d-flex justify-content-center mt-5">
             <mat-spinner *ngIf="!mapLoaded">
             </mat-spinner>
           </div>
           <div *ngIf="mapLoaded | async">
-            <agm-map [latitude]="latitude" [longitude]="longitude" (mapReady)="mapReadyHandler($event)">
+            <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom" (mapReady)="mapReadyHandler($event)">
               <agm-marker
                 *ngIf="locationChosen"
                 [latitude]="latitude"
@@ -92,18 +108,25 @@
           </div>
         </div>
         <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext>Next</button>
+          <button mat-stroked-button color="primary" class="ps-3 pe-3 pt-2 pb-2 rounded me-4" matStepperPrevious>Back
+          </button>
+          <button mat-stroked-button color="primary" class="ps-3 pe-3 pt-2 pb-2 rounded" (click)="createEvent()"
+                  matStepperNext>Submit
+          </button>
         </div>
       </form>
     </mat-step>
     <mat-step>
       <ng-template matStepLabel>Done</ng-template>
-      <p>You are now done.</p>
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button (click)="stepper.reset()">Reset</button>
+      <div class="d-flex flex-column justify-content-center align-items-center mt-5 mb-5">
+        <div class="d-flex align-items-center">
+          <h2 color="primary">Congratulations!</h2>
+          
+          <mat-icon color="primary">check_circle</mat-icon>
+        </div>
+        <div>Now you have to wait until an admin verify your event</div>
       </div>
+
     </mat-step>
   </mat-stepper>
 </div>

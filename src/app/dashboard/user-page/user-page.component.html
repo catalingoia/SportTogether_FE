@@ -3,8 +3,11 @@
     Create a new event
   </button>
   <div class=" d-flex justify-content-between align-items-center">
-    <button mat-raised-button class="pt-3 pb-3 me-4 rounded-circle logout-btn button-display" (click)="logout()">
+    <button mat-raised-button class="pt-3 pb-3 me-4 rounded-circle logout-btn button-display"  [routerLink]="'/account-page'">
       <mat-icon class="icon-display">person</mat-icon>
+    </button>
+    <button *ngIf="isAdmin" mat-raised-button class="ps-3 pe-3 p-1 me-3 rounded logout-btn" [routerLink]="'/admin-page'">
+      Admin page
     </button>
     <button mat-raised-button class="ps-3 pe-3 p-1 rounded logout-btn" (click)="logout()">
       LOG OUT
@@ -22,8 +25,10 @@
   </div>
 </div>
 
-<pagination-controls class="d-flex justify-content-end me-5 position-fixed bottom-0 end-0"
+<pagination-controls class=" bg-pagination d-flex justify-content-end me-5 position-fixed bottom-0 end-0"
                      previousLabel="Prev"
                      nextLabel="Next"
                      (pageChange)="handlePageChange($event)"
 ></pagination-controls>
+
+

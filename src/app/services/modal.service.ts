@@ -11,7 +11,7 @@ export class ModalService {
   }
 
   openModal(): Promise<any> {
-    const modalRef = this.modalService.open(CreateEventModalComponent,{size:'lg'});
+    const modalRef = this.modalService.open(CreateEventModalComponent,{size:'lg',});
     return modalRef.result;
   }
 }

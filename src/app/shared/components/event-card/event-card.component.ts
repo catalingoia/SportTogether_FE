@@ -18,6 +18,7 @@ export class EventCardComponent implements OnInit {
   @Input() event: EventCardModel;
   @Output() newJoin = new EventEmitter<JoinEmitter>()
   isDisabled: boolean = false
+  panelOpenState: boolean;
 
 
   constructor(private eventsService: EventsService) { }

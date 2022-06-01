@@ -1,6 +1,17 @@
 import {UserModel} from "./user.model";
 
-
+export interface Product {
+  id?:string;
+  code?:string;
+  name?:string;
+  description?:string;
+  price?:number;
+  quantity?:number;
+  inventoryStatus?:string;
+  category?:string;
+  image?:string;
+  rating?:number;
+}
 
 export interface EventCardModel {
   isJoined: boolean;
@@ -24,19 +35,15 @@ export interface EventCardModel {
 
 }
 
-export interface EventCardModelPost {
+export interface EventPostModel {
   sport: string
   level: string
-  location: string
-  price: number;
-  maxPlayers: number;
-  participants: UserModel[];
-  createTimestamp: Date;
-  updateTimestamp: Date;
-  email: string;
-  accepted: boolean;
-  rejected: boolean
-  description: string;
-  contactEmail: string;
   contactPhone: string;
-}
+  contactEmail: string;
+  maxPlayers: number;
+  price: number;
+  description: string;
+  date: string;
+  time: string;
+  location: string
+  }

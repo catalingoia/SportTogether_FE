@@ -29,11 +29,18 @@ import { CreateEventModalComponent } from './shared/components/create-event-moda
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {MatStepperModule} from "@angular/material/stepper";
 import {MatDatepickerModule} from "@angular/material/datepicker";
-import {MatNativeDateModule} from "@angular/material/core";
+import {MAT_DATE_LOCALE, MatNativeDateModule} from "@angular/material/core";
 import {NgxMatTimepickerModule} from "ngx-mat-timepicker";
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import {AgmCoreModule} from "@agm/core";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {DatePipe} from "@angular/common";
+import {MatExpansionModule} from "@angular/material/expansion";
+import { AccountPageComponent } from './dashboard/account-page/account-page.component';
+import {CarouselModule} from "primeng/carousel";
+import {ButtonModule} from "primeng/button";
+import { AccountEventCardComponent } from './shared/components/account-event-card/account-event-card.component';
+
 export function tokenGetter() {
   return localStorage.getItem("access_token");
 }
@@ -49,6 +56,8 @@ export function tokenGetter() {
     EventCardAdminComponent,
     EventCardVerifiedComponent,
     CreateEventModalComponent,
+    AccountPageComponent,
+    AccountEventCardComponent,
 
   ],
   imports: [
@@ -89,12 +98,16 @@ export function tokenGetter() {
     NgxMatTimepickerModule,
     BsDatepickerModule.forRoot(),
     MatProgressSpinnerModule,
+    MatExpansionModule,
+    CarouselModule,
+    ButtonModule,
 
   ],
   providers: [
+    DatePipe,
     { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },
     MatDatepickerModule,
-
+    { provide: MAT_DATE_LOCALE, useValue: 'en-GB' }
   ],
   bootstrap: [AppComponent]
 })
