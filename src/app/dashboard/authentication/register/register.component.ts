@@ -26,7 +26,6 @@ export class RegisterComponent implements OnInit {
     this.userRole.roleName = "USER";
     this.loginInfo.email = this.registerForm.get('email')?.value;
     this.loginInfo.password = this.registerForm.get('password')?.value;
-
     this.authenticationService.register(this.registerForm?.value).subscribe(
       (response) => {
         if (response) {
@@ -46,6 +45,7 @@ export class RegisterComponent implements OnInit {
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       password: ['', Validators.required],
+      phone: ['', Validators.required],
     })
   }
 

@@ -1,17 +1,4 @@
-import {UserModel} from "./user.model";
 
-export interface Product {
-  id?:string;
-  code?:string;
-  name?:string;
-  description?:string;
-  price?:number;
-  quantity?:number;
-  inventoryStatus?:string;
-  category?:string;
-  image?:string;
-  rating?:number;
-}
 
 export interface EventCardModel {
   isJoined: boolean;
@@ -22,8 +9,8 @@ export interface EventCardModel {
   price: number;
   maxPlayers: number;
   participants: any;
-  createTimestamp: Date;
-  updateTimestamp: Date;
+  time: string;
+  date: string;
   email: string;
   firstName: string;
   lastName: string;

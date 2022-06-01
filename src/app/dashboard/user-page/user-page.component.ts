@@ -32,8 +32,6 @@ export class UserPageComponent extends BaseComponent implements OnInit {
     if(decodedToken.roles.includes("ADMIN")){
       this.isAdmin = true;
     }
-
-
   }
 
   logout() {
@@ -49,8 +47,13 @@ export class UserPageComponent extends BaseComponent implements OnInit {
     this.eventsService.getAllAcceptedEvents(page, pageSize).pipe(takeUntil(this.unsubscribe$)).subscribe(
       (response) => {
         this.count = response.totalItems;
-        this.events = response.events;
-        this.events.forEach(event => event.createTimestamp = new Date(event.createTimestamp))
+        response.events.forEach((event: EventCardModel)=>{
+          let eventDate = new Date(event.date).getTime()
+          let todayDate =  new Date().getTime()
+          if(eventDate > todayDate){
+            this.events.push(event)
+          }
+        })
       })
   }
 

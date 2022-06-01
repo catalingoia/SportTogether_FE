@@ -36,7 +36,7 @@
         <div class="mb-3">
           <mat-form-field class="w-100" appearance="fill">
             <mat-label>Email</mat-label>
-            <input type="email" matInput formControlName="email" placeholder="Ex. pat@example.com" email="true">
+            <input type="email" matInput formControlName="email" placeholder="Ex. catalin@example.com" email="true">
           </mat-form-field>
           <mat-error *ngIf="registerForm.hasError('email', 'email')">
             Please enter a valid email.</mat-error>
@@ -59,12 +59,19 @@
             <input type="password" matInput formControlName="password">
           </mat-form-field>
         </div>
+        <div class="mb-3">
+          <mat-form-field class="w-100" appearance="fill">
+            <mat-label>Phone Number</mat-label>
+            <input #input type="number"  onKeyPress="if(this.value.length==10) return false;"
+                   matInput formControlName="phone">
+          </mat-form-field>
+        </div>
         <div class="d-flex justify-content-center">
           <button mat-raised-button color="primary" class="register-btn rounded">Register</button>
         </div>
       </form>
       <div class="d-flex m-3 justify-content-center">
-      <a [routerLink]="'/login'">Do you have already an acoount?</a>
+      <a [routerLink]="'/login'">Do you have an account already?</a>
       </div>
     </mat-card-content>
   </mat-card>

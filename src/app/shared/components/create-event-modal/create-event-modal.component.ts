@@ -17,7 +17,7 @@ import {EventsService} from "../../../services/events.service";
 export class CreateEventModalComponent implements OnInit, AfterViewInit {
   @ViewChild('stepper') stepper: MatStepper;
   @ViewChild('search') searchElementRef: ElementRef;
-
+  todayDate: any;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   sports = sports;
@@ -39,6 +39,8 @@ export class CreateEventModalComponent implements OnInit, AfterViewInit {
               private datePipe: DatePipe,
               private eventService: EventsService
 ) {
+    this.todayDate = new Date();
+    this.todayDate.setDate(this.todayDate.getDate() + 1)
   }
 
 

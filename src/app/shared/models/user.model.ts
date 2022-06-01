@@ -8,6 +8,7 @@ export interface UserRegisterModel {
   lastName: string,
   email: string
   password: string,
+  phone: string
 }
 
 export interface UserModel {

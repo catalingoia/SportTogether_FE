@@ -25,7 +25,7 @@
   </div>
   <mat-card-content class="d-flex flex-column mb-0">
     <div>Location: {{event.location}}</div>
-    <div>Creation date: {{event.createTimestamp | date : 'mediumDate'}}, {{event.createTimestamp | date : 'shortTime'}}</div>
+    <div>Creation date: {{event.date}}, {{event.time}}</div>
     <div>
       Number of players: {{event.maxPlayers}}
     </div>

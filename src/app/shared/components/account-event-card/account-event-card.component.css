@@ -1,0 +1,19 @@
+@import "~bootstrap/dist/css/bootstrap.css";
+
+.card {
+  max-width: 400px;
+  min-width: 400px;
+}
+
+.message {
+  background-color: #673AB7;
+  color: white;
+  position: absolute;
+  top: -25px;
+  right: -10px;
+  -webkit-box-shadow: -2px 4px 19px -2px rgba(0,0,0,0.39);
+  box-shadow: -2px 4px 19px -2px rgba(0,0,0,0.39);
+}
+::ng-deep div.mat-expansion-panel-body {
+  padding: 0 20px 0px 20px !important;
+}

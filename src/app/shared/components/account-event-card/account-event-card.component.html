@@ -33,15 +33,14 @@
       <div>
         {{event.participants.length}}/{{event.maxPlayers}}
       </div>
-      <button *ngIf="!event.isJoined" mat-raised-button color="primary" class="p-2 rounded"
-              (click)="joinEvent(event.id)" [disabled]="isDisabled">JOIN
+      <button mat-raised-button class="p-1 rounded" (click)="deleteEvent(event.id)">
+        <mat-icon>delete</mat-icon>
       </button>
-      <button *ngIf="event.isJoined" mat-raised-button color="warn" class="p-2 rounded"
-              (click)="leaveEvent(event.id)">LEAVE
-      </button>
+
     </div>
   </mat-card-actions>
-  <mat-expansion-panel>
+  <mat-expansion-panel (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false">
     <mat-expansion-panel-header>
       <mat-panel-title>Description and contact</mat-panel-title>
     </mat-expansion-panel-header>

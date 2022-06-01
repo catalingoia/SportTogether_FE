@@ -53,7 +53,6 @@ export class AdminPageComponent extends BaseComponent implements OnInit {
       (response) => {
         this.count = response.totalItems;
         this.events = response.events;
-        this.events.forEach(event => event.createTimestamp = new Date(event.createTimestamp))
       })
   }
 
@@ -62,9 +61,11 @@ export class AdminPageComponent extends BaseComponent implements OnInit {
       (response) => {
         this.count = response.totalItems;
         this.events = response.events;
-        this.events.forEach(event => event.createTimestamp = new Date(event.createTimestamp))
+        console.log(this.events)
+
       })
   }
+
 
   changeFilter(event: any) {
     if (event.value == "approved") {
