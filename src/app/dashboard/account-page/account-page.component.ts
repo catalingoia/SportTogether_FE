@@ -19,13 +19,13 @@ export class AccountPageComponent extends BaseComponent implements OnInit {
     super();
     this.responsiveOptions = [
       {
-        breakpoint: '1024px',
-        numVisible: 3,
+        breakpoint: '2024px',
+        numVisible: 1,
         numScroll: 1
       },
       {
         breakpoint: '768px',
-        numVisible: 2,
+        numVisible: 1,
         numScroll: 1
       },
       {

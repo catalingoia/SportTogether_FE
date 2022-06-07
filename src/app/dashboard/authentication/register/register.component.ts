@@ -12,7 +12,6 @@ import {UserLoginModel, UserRole} from "../../../shared/models/user.model";
 export class RegisterComponent implements OnInit {
   public registerForm!: FormGroup
   registerValid: boolean
-
   constructor(private formBuilder: FormBuilder,
               private router: Router,
               private authenticationService: AuthenticationService) {

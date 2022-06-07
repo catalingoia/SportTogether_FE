@@ -8,6 +8,9 @@
         level: {{event.level}}
       </mat-card-subtitle>
     </div>
+    <div *ngIf="expired" class="message align-self-end pe-3 rounded ps-2 pt-1 pb-1">
+      This event is expired
+    </div>
     <div class="card-right-container">
       Created by:
       <div class="card-full-name">
@@ -27,10 +30,13 @@
   <mat-card-actions class="d-flex justify-content-between align-items-center ms-1 mb-1">
     <div>Price: {{event.price}} lei</div>
     <div class="d-flex flex-row align-items-center">
-      <button mat-raised-button color="success" class="p-1 rounded " (click)="acceptEvent(event.id, true)" >
+      <button mat-raised-button color="accent" class="p-1 rounded " [disabled]="expired" (click)="acceptEvent(event.id, true)" >
         <mat-icon>done</mat-icon></button>
-      <button mat-raised-button color="warn" class="p-1 rounded" (click)="acceptEvent(event.id, false)">
+      <button mat-raised-button color="warn" class="p-1 rounded" [disabled]="expired" (click)="acceptEvent(event.id, false)">
         <mat-icon>close</mat-icon></button>
+      <button mat-raised-button class="p-1 rounded" (click)="deleteEvent(event.id)">
+        <mat-icon>delete</mat-icon>
+      </button>
     </div>
   </mat-card-actions>
   <mat-expansion-panel>

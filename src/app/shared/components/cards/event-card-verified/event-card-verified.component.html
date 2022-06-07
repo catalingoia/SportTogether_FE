@@ -34,12 +34,12 @@
     <div>Price: {{event.price}} lei</div>
     <div class="d-flex flex-column align-items-end">
       <div class="d-flex mt-1">
-        <button *ngIf="event.rejected" mat-raised-button color="success" class="p-1 rounded "
-                (click)="acceptEvent(event.id, true)">
+        <button *ngIf="event.rejected" mat-raised-button color="accent" class="p-1 rounded "
+                [disabled]="expired" (click)="acceptEvent(event.id, true)">
           <mat-icon>done</mat-icon>
         </button>
         <button *ngIf="event.accepted" mat-raised-button color="warn" class="p-1 rounded"
-                (click)="acceptEvent(event.id, false)">
+                [disabled]="expired" (click)="acceptEvent(event.id, false)">
           <mat-icon>close</mat-icon>
         </button>
         <button mat-raised-button class="p-1 rounded" (click)="deleteEvent(event.id)">

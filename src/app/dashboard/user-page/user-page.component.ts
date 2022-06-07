@@ -46,6 +46,7 @@ export class UserPageComponent extends BaseComponent implements OnInit {
   getAllApprovedEvents(page: number, pageSize: number = this.pageSize) {
     this.eventsService.getAllAcceptedEvents(page, pageSize).pipe(takeUntil(this.unsubscribe$)).subscribe(
       (response) => {
+        this.events = []
         this.count = response.totalItems;
         response.events.forEach((event: EventCardModel)=>{
           let eventDate = new Date(event.date).getTime()
@@ -64,7 +65,6 @@ export class UserPageComponent extends BaseComponent implements OnInit {
 
   openModal(): void {
     this.modalService.openModal().then((response) => {
-      console.log(response)
     })
 
   }

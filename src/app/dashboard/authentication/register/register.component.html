@@ -1,28 +1,3 @@
-<!--<form class ="login-form"[formGroup]="registerForm" (submit)="register()">-->
-<!--  <h1>Register</h1>-->
-<!--  <div class="pt-4 pb-4">-->
-<!--    <div class="mb-3 row">-->
-<!--      <p>Email</p>-->
-<!--      <input class="input"  formControlName="email"/>-->
-<!--    </div>-->
-<!--    <div class="mb-3 row">-->
-<!--      <p>Password</p>-->
-<!--      <input class="input"  formControlName="password"/>-->
-<!--    </div>-->
-<!--    <div class="mb-3 row">-->
-<!--      <p>Last Name</p>-->
-<!--      <input class="input"  formControlName="lastName"/>-->
-<!--    </div>-->
-<!--    <div class="mb-3 row">-->
-<!--      <p>First Name</p>-->
-<!--      <input class="input"  formControlName="firstName"/>-->
-<!--    </div>-->
-
-<!--  </div>-->
-<!--  <button type="submit" class="">Submit-->
-<!--  </button>-->
-<!--  <button [routerLink]="['/register']"> Register</button>-->
-<!--</form>-->
 
 <div class="mare d-flex justify-content-center w-100 h-100">
   <mat-card class="register-card align-self-center d-flex justify-content-center flex-column align-items-center">
@@ -67,7 +42,8 @@
           </mat-form-field>
         </div>
         <div class="d-flex justify-content-center">
-          <button mat-raised-button color="primary" class="register-btn rounded">Register</button>
+          <button mat-raised-button color="primary" [disabled] = "registerForm.invalid"
+                  class="register-btn rounded">Register</button>
         </div>
       </form>
       <div class="d-flex m-3 justify-content-center">

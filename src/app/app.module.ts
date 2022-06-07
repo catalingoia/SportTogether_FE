@@ -10,12 +10,12 @@ import { LoginComponent } from './dashboard/authentication/login/login.component
 import { RegisterComponent } from './dashboard/authentication/register/register.component';
 import { AdminPageComponent } from './dashboard/admin-page/admin-page.component';
 import { UserPageComponent } from './dashboard/user-page/user-page.component';
-import { EventCardComponent } from './shared/components/event-card/event-card.component';
+import { EventCardComponent } from './shared/components/cards/event-card/event-card.component';
 import {Interceptor} from "./core/interceptor/interceptor";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatCardModule} from "@angular/material/card";
 import {MatButtonModule} from "@angular/material/button";
-import { EventCardAdminComponent } from './shared/components/event-card-admin/event-card-admin.component';
+import { EventCardAdminComponent } from './shared/components/cards/event-card-admin/event-card-admin.component';
 import {MatIconModule} from "@angular/material/icon";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatFormFieldModule} from "@angular/material/form-field";
@@ -23,9 +23,9 @@ import {MatInputModule} from "@angular/material/input";
 import {MatSelectModule} from "@angular/material/select";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {NgxPaginationModule} from "ngx-pagination";
-import { EventCardVerifiedComponent } from './shared/components/event-card-verified/event-card-verified.component';
+import { EventCardVerifiedComponent } from './shared/components/cards/event-card-verified/event-card-verified.component';
 import {MatDividerModule} from "@angular/material/divider";
-import { CreateEventModalComponent } from './shared/components/create-event-modal/create-event-modal.component';
+import { CreateEventModalComponent } from './shared/components/modals/create-event-modal/create-event-modal.component';
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {MatStepperModule} from "@angular/material/stepper";
 import {MatDatepickerModule} from "@angular/material/datepicker";
@@ -39,7 +39,8 @@ import {MatExpansionModule} from "@angular/material/expansion";
 import { AccountPageComponent } from './dashboard/account-page/account-page.component';
 import {CarouselModule} from "primeng/carousel";
 import {ButtonModule} from "primeng/button";
-import { AccountEventCardComponent } from './shared/components/account-event-card/account-event-card.component';
+import { AccountEventCardComponent } from './shared/components/cards/account-event-card/account-event-card.component';
+import { ParticipantModalComponent } from './shared/components/modals/participant-modal/participant-modal.component';
 
 export function tokenGetter() {
   return localStorage.getItem("access_token");
@@ -58,7 +59,7 @@ export function tokenGetter() {
     CreateEventModalComponent,
     AccountPageComponent,
     AccountEventCardComponent,
-
+    ParticipantModalComponent,
   ],
   imports: [
     AgmCoreModule.forRoot({

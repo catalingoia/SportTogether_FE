@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {EventCardModel} from "../../models/event-card.model";
-import {AdminCardEmitterApprove} from "../../models/admin-card-emitter-approve";
-import {EventsService} from "../../../services/events.service";
+import {EventCardModel} from "../../../models/event-card.model";
+import {AdminCardEmitterApprove} from "../../../models/admin-card-emitter-approve";
+import {EventsService} from "../../../../services/events.service";
 import {JwtHelperService} from "@auth0/angular-jwt";
 
 export interface JoinEmitter{
@@ -24,20 +24,18 @@ export class EventCardComponent implements OnInit {
   constructor(private eventsService: EventsService) { }
 
   ngOnInit(): void {
+    this.event.isJoined = false;
     if(this.event.participants.length > 0){
       const helper = new JwtHelperService()
       let token = JSON.parse(localStorage.getItem('token')!);
       const decodedToken = helper.decodeToken(token.access_token);
       this.event.participants.forEach( (participant: any) =>{
-        if(participant.email == decodedToken.sub)
+        if(participant.email == decodedToken.sub) {
           this.event.isJoined = true;
-          console.log("EMAIL AICI")
-      })
+        }})
     }
     if(this.event.maxPlayers == this.event.participants.length)
       this.isDisabled = true;
-
-
   }
 
   joinEvent(eventId: string){

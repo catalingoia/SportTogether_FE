@@ -1,4 +1,4 @@
-@import "~bootstrap/dist/css/bootstrap.css";
+@import "../../../../../../node_modules/bootstrap/dist/css/bootstrap.css";
 
 .card {
   max-width: 400px;

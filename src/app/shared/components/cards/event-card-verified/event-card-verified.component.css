@@ -1,0 +1,18 @@
+@import "../../../../../../node_modules/bootstrap/dist/css/bootstrap.css";
+
+.card {
+  width:400px;
+  max-width: 400px;
+}
+.bg-green{
+  background-color: #4CAF50 ;
+  color:white;
+  padding:0px 7px 0px 7px;
+  border-radius: 6px;
+}
+.bg-red{
+  background-color: #F44336;
+  color:white;
+  padding:0px 7px 0px 7px;
+  border-radius: 6px;
+}

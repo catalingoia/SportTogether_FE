@@ -1,5 +1,5 @@
 <mat-toolbar color="primary" class="d-flex justify-content-between ps-5 pe-5">
-  <div>Welcome to your events, {{username}}</div>
+  <div>Welcome to your events</div>
   <div>
     <button mat-raised-button class="ps-3 pe-3 p-1 me-3 rounded logout-btn" (click)="redirectToMain()">
       Main page
@@ -14,7 +14,7 @@
   <div class="ms-3 mt-4 width">
     <div class="ms-5">
       <h3>Your accepted Events</h3>
-      <h6 class="ms-3" *ngIf="acceptedEvents.length == 0">You have no rejected events</h6>
+      <h6 class="ms-3" *ngIf="acceptedEvents.length == 0">You have no accepted events</h6>
     </div>
     <div class="ms-4">
       <p-carousel

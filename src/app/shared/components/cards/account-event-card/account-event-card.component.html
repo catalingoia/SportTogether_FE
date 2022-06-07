@@ -33,6 +33,9 @@
       <div>
         {{event.participants.length}}/{{event.maxPlayers}}
       </div>
+      <button mat-raised-button class="ps-3 pe-3 p-1 rounded" (click)="openModal()">
+        participants
+      </button>
       <button mat-raised-button class="p-1 rounded" (click)="deleteEvent(event.id)">
         <mat-icon>delete</mat-icon>
       </button>

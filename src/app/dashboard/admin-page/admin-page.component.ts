@@ -6,6 +6,8 @@ import {takeUntil} from "rxjs";
 import {JwtHelperService} from "@auth0/angular-jwt";
 import {Router} from "@angular/router";
 import {PageEvent} from "@angular/material/paginator";
+import {AuthenticationService} from "../../services/authentication.service";
+import {UserRole} from "../../shared/models/user.model";
 
 interface Filter {
   value: string;
@@ -24,23 +26,24 @@ export class AdminPageComponent extends BaseComponent implements OnInit {
     {value: 'unapproved', viewValue: 'Unapproved'},
   ];
   events: EventCardModel[] = [];
-  username: string
   activeFilter="unapproved";
   count = 0;
   page = 0;
   pageSize= 6;
+  userRole: UserRole  = {email: '', roleName: ''};
+  email: string = "";
+  emailValid: boolean = true;
+  emailSuccess: boolean = false;
 
   constructor(private eventsService: EventsService,
+              private authenticationService: AuthenticationService,
               private router: Router) {
     super();
   }
 
   ngOnInit(): void {
     this.getAllUnapprovedEvents(0);
-    const helper = new JwtHelperService()
-    let token = JSON.parse(localStorage.getItem('token')!);
-    const decodedToken = helper.decodeToken(token.access_token);
-    this.username = decodedToken.sub
+
   }
 
   handleAcceptEvent(event: any){
@@ -65,7 +68,6 @@ export class AdminPageComponent extends BaseComponent implements OnInit {
 
       })
   }
-
 
   changeFilter(event: any) {
     if (event.value == "approved") {
@@ -98,6 +100,20 @@ export class AdminPageComponent extends BaseComponent implements OnInit {
 
   redirectToMain() {
     this.router.navigate(['main-page']);
+  }
 
+  addRole(){
+    console.log(this.email)
+    this.userRole.email = this.email;
+    this.userRole.roleName = "ADMIN";
+    this.authenticationService.addRole(this.userRole).subscribe(
+      _ => {this.emailSuccess = true},
+      error => {this.emailValid = false}
+    )
+  }
+
+  resetMessage() {
+    this.emailSuccess = false;
+    this.emailValid = true;
   }
 }

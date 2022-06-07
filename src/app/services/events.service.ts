@@ -1,11 +1,8 @@
 import {Injectable} from "@angular/core";
-import {UserLoginModel} from "../shared/models/user.model";
 import {Observable} from "rxjs";
 import {ApiUrls} from "../core/constants/api-urls";
-import {EventCardModel, EventPostModel} from "../shared/models/event-card.model";
+import { EventPostModel} from "../shared/models/event-card.model";
 import {HttpClient, HttpParams} from "@angular/common/http";
-import {JwtHelperService} from "@auth0/angular-jwt";
-import {tokenGetter} from "../app.module";
 import {PagingModel} from "../shared/models/paging.model";
 
 @Injectable({

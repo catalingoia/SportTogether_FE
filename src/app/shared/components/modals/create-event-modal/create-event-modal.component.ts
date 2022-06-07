@@ -7,7 +7,7 @@ import {auto} from "@popperjs/core";
 import {MapsAPILoader} from "@agm/core";
 import {DateAdapter} from "@angular/material/core";
 import {DatePipe} from "@angular/common";
-import {EventsService} from "../../../services/events.service";
+import {EventsService} from "../../../../services/events.service";
 
 @Component({
   selector: 'app-create-event-modal',

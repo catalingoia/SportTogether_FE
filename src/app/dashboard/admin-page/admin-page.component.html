@@ -1,5 +1,5 @@
 <mat-toolbar color="primary" class="d-flex justify-content-between ps-5 pe-5">
-  <div>Welcome to admin page, {{username}}</div>
+  <div>Welcome to the admin page</div>
   <div>
     <button mat-raised-button class="ps-3 pe-3 p-1 me-3 rounded logout-btn" (click)="redirectToMain()">
       Main page
@@ -9,17 +9,35 @@
     </button>
   </div>
 </mat-toolbar>
-<div class="ms-5">
-  <mat-form-field appearance="fill" class="mt-3 ms-4 mb-0 pb-0">
-    <mat-label>Filter events by:</mat-label>
-    <mat-select [(value)]="activeFilter" (selectionChange)="changeFilter($event)">
-      <mat-option *ngFor="let option of filter" [value]="option.value">
-        {{option.viewValue}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-  <div *ngIf='activeFilter=="unapproved"' class="row m-0  row-cols-xxl-3">
-    <div class="col" *ngFor="let event of events | paginate: {
+<div class="ms-5 me-5">
+  <div class="d-flex justify-content-between">
+    <mat-form-field appearance="fill" class="mt-3 ms-4 mb-0 pb-0">
+      <mat-label>Filter events by:</mat-label>
+      <mat-select [(value)]="activeFilter" (selectionChange)="changeFilter($event)">
+        <mat-option *ngFor="let option of filter" [value]="option.value">
+          {{option.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div class="d-flex flex-column mt-3 me-5 mb-0 pb-0">
+      <div class="d-flex align-items-center">
+        <mat-form-field class="" appearance="fill">
+          <mat-label>Email</mat-label>
+          <input type="email" matInput placeholder="Ex. catalin@example.com" [(ngModel)]="email" (focus)="resetMessage()">
+        </mat-form-field>
+        <button type="button" (click)="addRole()" mat-raised-button color="primary" class="pt-3 pb-3 rounded">Add admin role</button>
+      </div>
+      <mat-error *ngIf="!emailValid">
+        This email does not exist
+      </mat-error>
+      <div class="text-success" *ngIf="emailSuccess">
+        Admin role added to "{{email}}"
+      </div>
+    </div>
+
+  </div>
+  <div *ngIf='activeFilter=="unapproved"' class="row m-0 row-cols-xxl-3">
+    <div class="col mt-2" *ngFor="let event of events | paginate: {
               itemsPerPage: pageSize,
               currentPage: page,
               totalItems: count
