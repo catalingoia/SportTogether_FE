@@ -17,12 +17,15 @@ export class AuthenticationService {
   login(user: UserLoginModel): Observable<any> {
     return this.http.post<any>(ApiUrls.API_MAIN + "login", user)
   }
+
   register(user: UserRegisterModel): Observable<any> {
     return this.http.post<any>(ApiUrls.API_MAIN + "register", user)
   }
+
   addRole(userRole: UserRole): Observable<any> {
     return this.http.post<any>(ApiUrls.API_MAIN + "role/addtouser", userRole)
   }
+
   saveToken(response: any){
     const helper = new JwtHelperService()
     let token = JSON.parse(JSON.stringify(response))
@@ -31,7 +34,6 @@ export class AuthenticationService {
       this.router.navigate(['main-page']);
     if(decodedToken.roles.includes("ADMIN"))
       this.router.navigate(['admin-page']);
-
     localStorage.setItem("token", JSON.stringify(response));
   }
 }

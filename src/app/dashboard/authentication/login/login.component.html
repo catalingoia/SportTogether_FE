@@ -2,7 +2,6 @@
   <mat-card class="login-card align-self-center d-flex justify-content-center flex-column align-items-center">
     <mat-card-title class="mb-5">Login</mat-card-title>
     <mat-card-content>
-
       <form class="login-content" [formGroup]="loginForm" (submit)="login()">
         <mat-error *ngIf="!loginValid" class = "">
           The username and the password were not recognized
@@ -12,9 +11,6 @@
             <mat-label>Email</mat-label>
             <input type="email" matInput formControlName="email" placeholder="Ex. catalin@example.com" email="true">
           </mat-form-field>
-
-
-
         </div>
         <div class="mb-3">
           <mat-form-field class="w-100" appearance="fill">
@@ -27,7 +23,6 @@
           <button type="button"  [routerLink]="'/register'" mat-raised-button color="primary" class="login-btn rounded">Register</button>
         </div>
       </form>
-
     </mat-card-content>
   </mat-card>
 </div>

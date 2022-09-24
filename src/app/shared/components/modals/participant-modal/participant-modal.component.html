@@ -1,0 +1,10 @@
+<div class="modal-header">
+  <div class="modal-title" id="modal-basic-title">List of the participants</div>
+  <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+
+</div>
+<div class="ms-4 mt-4 mb-4">
+<div  *ngFor="let participant of participants">
+  <div class=" mt-1 mb-1">{{participant.firstName}} {{participant.lastName}}, {{participant.phone}} </div>
+</div>
+</div>

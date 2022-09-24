@@ -18,6 +18,7 @@ export class CreateEventModalComponent implements OnInit, AfterViewInit {
   @ViewChild('stepper') stepper: MatStepper;
   @ViewChild('search') searchElementRef: ElementRef;
   todayDate: any;
+  currentTime: any;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   sports = sports;
@@ -40,10 +41,9 @@ export class CreateEventModalComponent implements OnInit, AfterViewInit {
               private eventService: EventsService
 ) {
     this.todayDate = new Date();
-    this.todayDate.setDate(this.todayDate.getDate() + 1)
+    this.currentTime = this.datePipe.transform(this.todayDate, "shortTime")
+    this.todayDate.setDate(this.todayDate.getDate())
   }
-
-
 
   ngOnInit(): void {
     this.getUserLocation();
@@ -61,7 +61,10 @@ export class CreateEventModalComponent implements OnInit, AfterViewInit {
       time: ['', Validators.required],
       location: ['', Validators.required],
     });
+  }
 
+  ngAfterViewInit() {
+    this.findAddress()
   }
 
   createEvent() {
@@ -82,7 +85,7 @@ export class CreateEventModalComponent implements OnInit, AfterViewInit {
         this.ngZone.run(() => {
           // some details
           let place: google.maps.places.PlaceResult = autocomplete.getPlace();
-          this.fullLocation = (place.formatted_address)
+          this.fullLocation = (place.name)
           this.latitude = place.geometry?.location.lat();
           this.longitude = place.geometry?.location.lng();
           this.locationChosen = true;
@@ -92,9 +95,6 @@ export class CreateEventModalComponent implements OnInit, AfterViewInit {
     });
   }
 
-  ngAfterViewInit() {
-    this.findAddress()
-  }
   getUserLocation() {
     if (navigator.geolocation) {
       window.navigator.geolocation.getCurrentPosition(position => {
@@ -104,7 +104,6 @@ export class CreateEventModalComponent implements OnInit, AfterViewInit {
       });
     }
   }
-
 
   public mapReadyHandler(map: google.maps.Map): void {
     this.map = map;

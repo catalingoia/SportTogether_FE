@@ -58,9 +58,8 @@ export class EventCardComponent implements OnInit {
         this.event.isJoined = false;
         this.newJoin.emit({eventId, email})
 
-
       }
-
     )
   }
+
 }

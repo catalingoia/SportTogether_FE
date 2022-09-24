@@ -14,7 +14,6 @@ export class ModalService {
   openParticipantsModal(event: any): Promise<any> {
     const modalRef = this.modalService.open(ParticipantModalComponent,{size:'sm',  centered: true});
     modalRef.componentInstance.event = event;
-
     return modalRef.result.then((result) => {
       console.log(result);})
   }

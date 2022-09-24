@@ -21,8 +21,8 @@
         *ngIf="acceptedEvents.length > 0"
         [value]="acceptedEvents"
         [numVisible]="3"
-        [circular]="false"
-        [responsiveOptions]="responsiveOptions">
+        [numScroll]="1"
+        [circular]="false">
         <ng-template let-acceptedEvent pTemplate="item">
           <app-account-event-card [event]="acceptedEvent" (delete)="handleDeleteAcceptedEvent($event)"></app-account-event-card>
         </ng-template>
@@ -40,8 +40,7 @@
                   [value]="rejectedEvents"
                   [numVisible]="3"
                   [numScroll]="1"
-                  [circular]="false"
-                  [responsiveOptions]="responsiveOptions">
+                  [circular]="false">
         <ng-template let-rejectedEvent pTemplate="item">
           <app-account-event-card [event]="rejectedEvent" (delete)="handleDeleteRejectedEvents($event)"></app-account-event-card>
         </ng-template>
@@ -57,9 +56,8 @@
       <p-carousel *ngIf="pendingEvents.length > 0"
                   [value]="pendingEvents"
                   [numVisible]="3"
-                  [numScroll]="3"
-                  [circular]="false"
-                  [responsiveOptions]="responsiveOptions">
+                  [numScroll]="1"
+                  [circular]="false">
         <ng-template let-pendingEvent pTemplate="item">
           <app-account-event-card [event]="pendingEvent" (delete)="handleDeletePendingEvents($event)"></app-account-event-card>
         </ng-template>

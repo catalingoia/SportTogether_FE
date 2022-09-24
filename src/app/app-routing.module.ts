@@ -15,10 +15,9 @@ const routes: Routes = [
   {path: 'admin-page', component: AdminPageComponent, canActivate: [AuthGuard, AdminAuthGuard]},
   {path: 'main-page', component: UserPageComponent, canActivate: [AuthGuard]},
   {path: 'account-page', component: AccountPageComponent, canActivate: [AuthGuard]},
-  {path: '**', redirectTo: 'login'}
-
+  {path: '', component: UserPageComponent, canActivate: [AuthGuard]},
+  {path: '**', redirectTo: '/login'}
 ];
-
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

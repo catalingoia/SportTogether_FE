@@ -13,27 +13,9 @@ import {EventCardModel} from "../../shared/models/event-card.model";
 })
 export class AccountPageComponent extends BaseComponent implements OnInit {
   username: string;
-  responsiveOptions;
   constructor(private router: Router,
               private eventsService: EventsService) {
     super();
-    this.responsiveOptions = [
-      {
-        breakpoint: '2024px',
-        numVisible: 1,
-        numScroll: 1
-      },
-      {
-        breakpoint: '768px',
-        numVisible: 1,
-        numScroll: 1
-      },
-      {
-        breakpoint: '560px',
-        numVisible: 1,
-        numScroll: 1
-      }
-    ];
   }
 
   pendingEvents: EventCardModel[] = []
@@ -93,5 +75,4 @@ export class AccountPageComponent extends BaseComponent implements OnInit {
   handleDeletePendingEvents($event: string) {
     this.getPendingEventsByEmail()
   }
-
 }

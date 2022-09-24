@@ -1,5 +1,3 @@
-
-
 export interface EventCardModel {
   isJoined: boolean;
   id: string
@@ -19,7 +17,6 @@ export interface EventCardModel {
   description: string;
   contactEmail: string;
   contactPhone: string;
-
 }
 
 export interface EventPostModel {
@@ -33,4 +30,4 @@ export interface EventPostModel {
   date: string;
   time: string;
   location: string
-  }
+}

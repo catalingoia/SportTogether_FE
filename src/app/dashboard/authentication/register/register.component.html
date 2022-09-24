@@ -37,7 +37,7 @@
         <div class="mb-3">
           <mat-form-field class="w-100" appearance="fill">
             <mat-label>Phone Number</mat-label>
-            <input #input type="number"  onKeyPress="if(this.value.length==10) return false;"
+            <input matInput type="number" (keypress)="($event.charCode >= 48 && $event.charCode < 58)"
                    matInput formControlName="phone">
           </mat-form-field>
         </div>

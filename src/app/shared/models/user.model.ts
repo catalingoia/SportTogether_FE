@@ -11,15 +11,7 @@ export interface UserRegisterModel {
   phone: string
 }
 
-export interface UserModel {
-  firstName: string,
-  lastName: string,
-  email: string
-}
-
-
 export interface UserRole {
   email: string,
   roleName: string,
-  }
-
+}

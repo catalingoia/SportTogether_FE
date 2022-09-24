@@ -34,7 +34,6 @@
         Admin role added to "{{email}}"
       </div>
     </div>
-
   </div>
   <div *ngIf='activeFilter=="unapproved"' class="row m-0 row-cols-xxl-3">
     <div class="col mt-2" *ngFor="let event of events | paginate: {
@@ -54,8 +53,6 @@
       <app-event-card-verified [event]="event" (newAcceptEvent)="handleAcceptEvent($event)"></app-event-card-verified>
     </div>
   </div>
-
-
 </div>
 <pagination-controls class="d-flex justify-content-end me-5 position-fixed bottom-0 end-0"
                      previousLabel="Prev"

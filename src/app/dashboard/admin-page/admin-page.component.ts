@@ -43,13 +43,11 @@ export class AdminPageComponent extends BaseComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllUnapprovedEvents(0);
-
   }
 
   handleAcceptEvent(event: any){
     this.handlePageChange(1)
   }
-
 
   getAllEvents(page: number, pageSize: number = this.pageSize) {
     this.eventsService.getAllEvents(page, pageSize).pipe(takeUntil(this.unsubscribe$)).subscribe(

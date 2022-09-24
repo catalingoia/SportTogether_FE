@@ -1,10 +1,13 @@
 @import "~bootstrap/dist/css/bootstrap.css";
+
 .logout-btn{
   font-size: 15px;
 }
+
 .icon-display {
   transform: scale(2);
 }
+
 .button-display {
   transform: scale(0.7);
 }

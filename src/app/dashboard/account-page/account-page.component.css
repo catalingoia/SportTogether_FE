@@ -3,11 +3,6 @@
   font-size: 15px;
 }
 
-.yui-carousel-element li {
-  height: 320px;
-}
-
-
 ::ng-deep  .p-carousel-indicators {
   display: none !important;}
 
@@ -16,5 +11,5 @@
 }
 
 .width{
-  width:93%;
+  width: 92.6%
 }

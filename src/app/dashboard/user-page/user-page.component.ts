@@ -66,6 +66,5 @@ export class UserPageComponent extends BaseComponent implements OnInit {
   openModal(): void {
     this.modalService.openModal().then((response) => {
     })
-
   }
 }
